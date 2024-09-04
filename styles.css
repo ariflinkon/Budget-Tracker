@@ -1,0 +1,43 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-section, .transaction-list, .summary {
+    margin-bottom: 20px;
+}
+
+.input-section input {
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.input-section button {
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+
+.transaction-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.transaction-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.summary p {
+    font-size: 1.2em;
+}
