@@ -10,12 +10,17 @@ function addTransaction(event) {
     const type = event.target.id === 'add-income' ? 'income' : 'expense';
 
     if (description && amount) {
-        const transaction = { description, amount, type };
+        const transaction = { description, amount, type, id: Date.now() };
         transactions.push(transaction);
         updateUI();
         document.getElementById('description').value = '';
         document.getElementById('amount').value = '';
     }
+}
+
+function deleteTransaction(id) {
+    transactions = transactions.filter(transaction => transaction.id !== id);
+    updateUI();
 }
 
 function updateUI() {
@@ -28,6 +33,12 @@ function updateUI() {
     transactions.forEach(transaction => {
         const li = document.createElement('li');
         li.textContent = `${transaction.description}: $${transaction.amount.toFixed(2)}`;
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.addEventListener('click', () => deleteTransaction(transaction.id));
+        li.appendChild(deleteBtn);
+
         transactionList.appendChild(li);
 
         if (transaction.type === 'income') {
