@@ -9,12 +9,14 @@ function addTransaction(event) {
     const amount = parseFloat(document.getElementById('amount').value);
     const type = event.target.id === 'add-income' ? 'income' : 'expense';
 
-    if (description && amount) {
+    if (description && amount && isNaN(description) && !isNaN(amount)) {
         const transaction = { description, amount, type, id: Date.now() };
         transactions.push(transaction);
         updateUI();
         document.getElementById('description').value = '';
         document.getElementById('amount').value = '';
+    } else {
+        alert('Please enter a valid description (string) and amount (number).');
     }
 }
 
